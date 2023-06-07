@@ -1,13 +1,15 @@
 import { View, Text, StyleSheet } from "react-native";
 import questions from "../../data/questions.json";
 import React from "react";
+import { Link } from "expo-router";
 
 const question = questions.items[0];
 
-const QuestionListItem = ({question}) => {
-    
+const QuestionListItem = ({ question }) => {
   return (
+    <Link href='/details'>
     <View style={styles.container}>
+      
       <Text style={styles.stats}>
         {question.score} votes • {question.answer_count} answers •{" "}
         {question.view_count} views
@@ -27,6 +29,7 @@ const QuestionListItem = ({question}) => {
         </Text>
       </View>
     </View>
+    </Link>
   );
 };
 
@@ -54,7 +57,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     gap: 5,
     marginTop: 10,
-    alignItems:'center'
+    alignItems: "center",
   },
   tag: {
     backgroundColor: "#e1ecf4",
@@ -65,8 +68,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   time: {
-    marginLeft:'auto',
-    fontSize:12,
-    color:'dimgray'
+    marginLeft: "auto",
+    fontSize: 12,
+    color: "dimgray",
   },
 });
