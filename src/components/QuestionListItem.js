@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import questions from "../../data/questions.json";
 import React from "react";
 import { Link } from "expo-router";
+import {decode }from "html-entities"
 
 const question = questions.items[0];
 
@@ -14,9 +15,9 @@ const QuestionListItem = ({ question }) => {
         {question.score} votes • {question.answer_count} answers •{" "}
         {question.view_count} views
       </Text>
-      <Text style={styles.title}>{question.title}</Text>
+      <Text style={styles.title}>{decode(question.title)}</Text>
       <Text numberOfLines={2} style={styles.body}>
-        {question.body_markdown}
+        {decode(question.body_markdown)}
       </Text>
       <View style={styles.tags}>
         {question.tags.map((tag) => (

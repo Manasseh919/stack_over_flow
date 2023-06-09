@@ -3,7 +3,7 @@ import React from "react";
 import { useSearchParams } from "expo-router";
 import questions from "../data/questions";
 import QuestionHeader from "../src/components/QuestionHeader";
-import answers from "../data/answers.json"
+import answers from "../data/answers.json";
 import AnswerListItem from "../src/components/AnswerListItem";
 
 const QuestionDetailsPage = () => {
@@ -14,21 +14,16 @@ const QuestionDetailsPage = () => {
   if (!question) {
     return <Text>Question Not found</Text>;
   }
-  // return (
-  //   <View style={{backgroundColor:'white',flex:1}}> 
-  //     <QuestionHeader question={question} />
-  //   </View>c
-  // );
 
-  return(
-    <View style={{backgroundColor:'white',flex:1}}> 
-    <FlatList
-    data={answers.items}
-    renderItem={({item})=><AnswerListItem answer={item}/>}
-    ListHeaderComponent={()=><QuestionHeader question={question}/>}
-    />
+  return (
+    <View style={{ backgroundColor: "white", flex: 1 }}>
+      <FlatList
+        data={answers.items}
+        renderItem={({ item }) => <AnswerListItem answer={item} />}
+        ListHeaderComponent={() => <QuestionHeader question={question} />}
+      />
     </View>
-  )
+  );
 };
 
 export default QuestionDetailsPage;

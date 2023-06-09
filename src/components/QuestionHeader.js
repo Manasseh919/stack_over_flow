@@ -2,6 +2,8 @@ import { View, Text, StyleSheet } from "react-native";
 import questions from "../../data/questions.json";
 import React from "react";
 import { Link } from "expo-router";
+import {decode }from "html-entities"
+import Markdown from 'react-native-markdown-display';
 
 const question = questions.items[0];
 
@@ -9,7 +11,7 @@ const QuestionHeader = ({ question }) => {
   return (
     <Link href={`/${question.question_id}`}>
       <View style={styles.container}>
-        <Text style={styles.title}>{question.title}</Text>
+        <Text style={styles.title}>{decode(question.title)}</Text>
         <Text style={styles.stats}>
           {question.score} votes • {question.answer_count} answers •{" "}
           {question.view_count} views
@@ -17,7 +19,7 @@ const QuestionHeader = ({ question }) => {
 
         <View style={styles.separator} />
 
-        <Text style={styles.body}>{question.body_markdown}</Text>
+        <Markdown >{decode(question.body_markdown)}</Markdown>
         <View style={styles.tags}>
           {question.tags.map((tag) => (
             <Text key={tag} style={styles.tag}>
