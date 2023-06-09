@@ -7,7 +7,7 @@ const question = questions.items[0];
 
 const QuestionListItem = ({ question }) => {
   return (
-    <Link href='/details'>
+    <Link href={`/${question.question_id}`}>
     <View style={styles.container}>
       
       <Text style={styles.stats}>
